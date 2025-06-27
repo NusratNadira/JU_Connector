@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
+import BuyProducts from "./pages/products/BuyProducts";
+import SellProducts from "./pages/products/SellProducts";
 import Contact from "./pages/Contact";
 import Community from "./pages/Community";
 import TuitionOffers from "./pages/opportunities/TuitionOffers";
@@ -25,6 +27,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/products/BuyProducts" element={<BuyProducts />} />
+            <Route path="/products/SellProducts" element={<SellProducts />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/community" element={<Community />} />
             {/* <Route path="/tuition-offers" element={<TuitionOffers />} /> */}
