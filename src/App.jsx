@@ -13,6 +13,7 @@ import PartTimeJobs from "./pages/opportunities/PartTimeJobs";
 import Freelancing from "./pages/opportunities/Freelancing";
 import BlindSupport from "./pages/opportunities/BlindSupport";
 import ProjectHelp from "./pages/opportunities/ProjectHelp";
+import Designer from "./pages/opportunities/Designer";
 
 function App() {
   return (
@@ -26,11 +27,14 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/community" element={<Community />} />
-            <Route path="/tuition-offers" element={<TuitionOffers />} />
-            <Route path="/parttime-jobs" element={<PartTimeJobs />} />
-            <Route path="/freelancing" element={<Freelancing />} />
-            <Route path="/blind-support" element={<BlindSupport />} />
-            <Route path="/project-help" element={<ProjectHelp />} />
+            {/* <Route path="/tuition-offers" element={<TuitionOffers />} /> */}
+            <Route path="/opportunities/PartTimeJobs" element={<PartTimeJobs />} />
+            <Route path="/opportunities/Freelancing" element={<Freelancing />} />
+            <Route path="/opportunities/BlindSupport" element={<BlindSupport />} />
+            <Route path="/opportunities/ProjectHelp" element={<ProjectHelp />} />
+            <Route path="/opportunities/Designer" element={<Designer />} />
+             <Route path="/opportunities/TuitionOffers" element={<TuitionOffers />} />
+
           </Routes>
         </main>
 
