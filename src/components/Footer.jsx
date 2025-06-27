@@ -10,8 +10,8 @@ const Footer = () => {
         <div>
           <h2 className="font-bold text-lg mb-2 text-[#007f5f]">JU Marketplace</h2>
           <p className="leading-relaxed">Jahangirnagar University,<br />Savar, Dhaka</p>
-          <p className="mt-2">📞 +088-01989902813</p>
-          <p>📧 20213654522nadira@juniv.edu</p>
+          <p className="mt-2">📞 +880-01989902813</p>
+          <p >📧 20213654522nadira@juniv.edu</p>
         </div>
 
         {/* Support Section */}
