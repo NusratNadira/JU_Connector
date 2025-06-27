@@ -1,0 +1,36 @@
+ @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.shine-effect {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 400% 400%;
+  animation: shine 1.5s infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.group:hover .shine-effect {
+  opacity: 1;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: -100% 0%;
+  }
+}
+
