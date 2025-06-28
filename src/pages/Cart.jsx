@@ -1,19 +1,9 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const CartPage = () => {
+const Cart = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
-  
-  const handleCheckout = () => {
-  navigate("/checkoutpage", {
-    state: {
-      cartItems: cartItems, // send the full list
-      total: total,         // send total price
-    },
-  });
-};
 
   const product = location.state?.product;
 
@@ -23,13 +13,29 @@ const CartPage = () => {
   if (!product) {
     return (
       <div className="pt-28 text-center text-gray-600 text-lg">
-        Your cart is empty. Go <span onClick={() => navigate('/')} className="text-green-600 underline cursor-pointer">back to shop</span>.
+        Your cart is empty. Go{" "}
+        <span
+          onClick={() => navigate("/")}
+          className="text-green-600 underline cursor-pointer"
+        >
+          back to shop
+        </span>
+        .
       </div>
     );
   }
 
   const price = parseFloat(product.price.replace("$", ""));
   const subtotal = price * quantity;
+
+  const handleCheckout = () => {
+    navigate("/checkoutpage", {
+      state: {
+        cartItems: [{ ...product, quantity }],
+        total: subtotal,
+      },
+    });
+  };
 
   return (
     <div className="pt-28 px-6 pb-16 bg-[#f9fafb] min-h-screen">
@@ -60,7 +66,7 @@ const CartPage = () => {
                     className="border border-green-300 rounded px-3 py-1 w-16 text-center"
                   />
                 </td>
-                <td>${(price * quantity).toFixed(2)}</td>
+                <td>${subtotal.toFixed(2)}</td>
               </tr>
             </tbody>
           </table>
@@ -112,16 +118,15 @@ const CartPage = () => {
             </div>
           </div>
           <button
-  onClick={handleCheckout}
-  className="mt-6 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
->
-  Proceed to Checkout
-</button>
-
+            onClick={handleCheckout}
+            className="mt-6 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+          >
+            Proceed to Checkout
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default CartPage;
+export default Cart;

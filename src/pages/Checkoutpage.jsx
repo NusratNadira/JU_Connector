@@ -29,8 +29,6 @@ return (
 </form>
 </div>
 
-php-template
-Copy code
     {/* Order Summary */}
     <div className="bg-gray-50 p-6 rounded-md shadow-sm">
       <h3 className="text-xl font-bold text-green-800 mb-6">Your Order</h3>
