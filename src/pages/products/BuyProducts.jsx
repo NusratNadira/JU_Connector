@@ -1,5 +1,7 @@
- import React, { useState } from "react";
-import { FaHeart, FaRegHeart, FaEye, FaShoppingCart } from "react-icons/fa";
+ import React, {useState} from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FaHeart, FaEye, FaCartPlus,FaRegHeart } from "react-icons/fa";
+
 
 const categories = [
   "Books",
@@ -194,12 +196,19 @@ const allProducts = [
 const BuyProducts = () => {
   const [wishlist, setWishlist] = useState([]);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   const toggleWishlist = (id) => {
     setWishlist((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
   };
+
+  const handleAddToCart = (product) => {
+    // Send product to cart via state
+    navigate("/cart", { state: { product } });
+  };
+
 
   const scrollToCategory = (cat) => {
     const element = document.getElementById(cat);
@@ -278,7 +287,7 @@ const BuyProducts = () => {
                   </div>
 
                   <button
-                    onClick={() => alert("Redirect to Cart")}
+                    onClick={() => handleAddToCart(product)}
                     className="mt-3 w-full bg-green-600 text-white py-1 rounded hover:bg-green-700 transition"
                   >
                     Add to Cart

@@ -1,72 +1,127 @@
- import React from "react";
-import { useCart } from "../context/CartContext";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const Cart = () => {
-  const { cartItems, dispatch } = useCart();
+const CartPage = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleQuantityChange = (id, quantity) => {
-    dispatch({ type: "UPDATE_QUANTITY", payload: { id, quantity } });
-  };
+  
+  const handleCheckout = () => {
+  navigate("/checkoutpage", {
+    state: {
+      cartItems: cartItems, // send the full list
+      total: total,         // send total price
+    },
+  });
+};
 
-  const handleRemove = (id) => {
-    dispatch({ type: "REMOVE_FROM_CART", payload: id });
-  };
+  const product = location.state?.product;
 
-  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const [quantity, setQuantity] = useState(1);
+  const [coupon, setCoupon] = useState("");
+
+  if (!product) {
+    return (
+      <div className="pt-28 text-center text-gray-600 text-lg">
+        Your cart is empty. Go <span onClick={() => navigate('/')} className="text-green-600 underline cursor-pointer">back to shop</span>.
+      </div>
+    );
+  }
+
+  const price = parseFloat(product.price.replace("$", ""));
+  const subtotal = price * quantity;
 
   return (
-    <div className="min-h-screen bg-gray-100 pt-32 px-4 md:px-20">
-      <h2 className="text-3xl font-bold text-green-800 mb-6">Your Shopping Cart</h2>
-      <div className="bg-white shadow rounded-md p-6">
-        {cartItems.length === 0 ? (
-          <p className="text-gray-500">Your cart is empty.</p>
-        ) : (
-          <div className="space-y-6">
-            {cartItems.map((item) => (
-              <div key={item.id} className="flex items-center justify-between border-b pb-4">
-                <div className="flex items-center gap-4">
-                  <img src={item.image} alt={item.name} className="w-16 h-16 object-contain" />
-                  <div>
-                    <h3 className="font-semibold text-gray-800">{item.name}</h3>
-                    <p className="text-gray-600">${item.price}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <select
-                    value={item.quantity}
-                    onChange={(e) =>
-                      handleQuantityChange(item.id, parseInt(e.target.value))
-                    }
-                    className="border rounded px-2 py-1"
-                  >
-                    {[...Array(10).keys()].map((n) => (
-                      <option key={n + 1} value={n + 1}>
-                        {n + 1}
-                      </option>
-                    ))}
-                  </select>
-                  <p className="w-24 text-right">${item.price * item.quantity}</p>
-                  <button
-                    onClick={() => handleRemove(item.id)}
-                    className="text-red-500 hover:underline"
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
-            ))}
+    <div className="pt-28 px-6 pb-16 bg-[#f9fafb] min-h-screen">
+      <h1 className="text-3xl font-bold text-green-800 mb-10 text-center">Shopping Cart</h1>
 
-            <div className="text-right pt-6">
-              <h4 className="text-xl font-semibold text-green-700">Total: ${total}</h4>
-              <button className="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-                Proceed to Checkout
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Cart Items Table */}
+        <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow-md">
+          <table className="w-full text-left">
+            <thead>
+              <tr className="border-b text-gray-600">
+                <th className="pb-3">Product</th>
+                <th className="pb-3">Price</th>
+                <th className="pb-3">Quantity</th>
+                <th className="pb-3">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="text-green-900 font-medium border-b py-4">
+                <td className="py-4">{product.name}</td>
+                <td>${price}</td>
+                <td>
+                  <input
+                    type="number"
+                    value={quantity}
+                    min={1}
+                    onChange={(e) => setQuantity(Number(e.target.value))}
+                    className="border border-green-300 rounded px-3 py-1 w-16 text-center"
+                  />
+                </td>
+                <td>${(price * quantity).toFixed(2)}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          {/* Bottom Buttons and Coupon */}
+          <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <button
+              onClick={() => navigate("/products/BuyProducts")}
+              className="bg-green-100 text-green-700 px-6 py-2 rounded hover:bg-green-200 transition"
+            >
+              Return to Shop
+            </button>
+
+            <button className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">
+              Update Cart
+            </button>
+
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="Coupon Code"
+                value={coupon}
+                onChange={(e) => setCoupon(e.target.value)}
+                className="border px-4 py-2 rounded"
+              />
+              <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">
+                Apply Coupon
               </button>
             </div>
           </div>
-        )}
+        </div>
+
+        {/* Cart Summary */}
+        <div className="bg-white p-6 rounded-lg shadow-md h-fit">
+          <h3 className="text-xl font-semibold text-green-800 mb-4">Cart Total</h3>
+          <div className="space-y-2 text-gray-700">
+            <div className="flex justify-between">
+              <span>Subtotal:</span>
+              <span>${subtotal.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Shipping:</span>
+              <span>Free</span>
+            </div>
+            <hr />
+            <div className="flex justify-between font-semibold text-green-800 text-lg">
+              <span>Total:</span>
+              <span>${subtotal.toFixed(2)}</span>
+            </div>
+          </div>
+          <button
+  onClick={handleCheckout}
+  className="mt-6 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+>
+  Proceed to Checkout
+</button>
+
+        </div>
       </div>
     </div>
   );
 };
 
-export default Cart;
+export default CartPage;
