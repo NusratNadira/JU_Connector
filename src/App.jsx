@@ -16,6 +16,7 @@ import Freelancing from "./pages/opportunities/Freelancing";
 import BlindSupport from "./pages/opportunities/BlindSupport";
 import ProjectHelp from "./pages/opportunities/ProjectHelp";
 import Designer from "./pages/opportunities/Designer";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -38,7 +39,7 @@ function App() {
             <Route path="/opportunities/ProjectHelp" element={<ProjectHelp />} />
             <Route path="/opportunities/Designer" element={<Designer />} />
              <Route path="/opportunities/TuitionOffers" element={<TuitionOffers />} />
-
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </main>
 

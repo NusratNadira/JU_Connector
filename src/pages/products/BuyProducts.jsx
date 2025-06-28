@@ -1,141 +1,294 @@
  import React, { useState } from "react";
-import { FaHeart, FaRegHeart, FaEye } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { FaHeart, FaRegHeart, FaEye, FaShoppingCart } from "react-icons/fa";
 
-// Dummy product data (replace with backend/API in future)
-const productsData = {
-  Books: [
-    { id: 1, name: "C Programming", price: 150, image: "/images/book1.jpg" },
-    { id: 2, name: "DSA by Narasimha", price: 250, image: "/images/book2.jpg" },
-    { id: 3, name: "Java Made Easy", price: 300, image: "/images/book3.jpg" },
-    { id: 4, name: "ML with Python", price: 450, image: "/images/book4.jpg" },
-    { id: 5, name: "Competitive Guide", price: 180, image: "/images/book5.jpg" },
-  ],
-  Electronics: [
-    { id: 6, name: "Laptop", price: 45000, image: "/images/laptop.jpg" },
-    { id: 7, name: "Keyboard", price: 800, image: "/images/keyboard.jpg" },
-    { id: 8, name: "Mouse", price: 300, image: "/images/mouse.jpg" },
-    { id: 9, name: "Monitor", price: 7500, image: "/images/monitor.jpg" },
-    { id: 10, name: "Speaker", price: 2200, image: "/images/speaker.jpg" },
-  ],
-  Medicine: [
-    { id: 11, name: "Paracetamol", price: 20, image: "/images/para.jpg" },
-    { id: 12, name: "Antacid", price: 50, image: "/images/antacid.jpg" },
-    { id: 13, name: "Vicks", price: 30, image: "/images/vicks.jpg" },
-    { id: 14, name: "Band Aid", price: 10, image: "/images/bandaid.jpg" },
-    { id: 15, name: "Vitamin D", price: 80, image: "/images/vitamin.jpg" },
-  ],
-  "Beauty Products": [
-    { id: 16, name: "Face Cream", price: 450, image: "/images/cream.jpg" },
-    { id: 17, name: "Lip Balm", price: 100, image: "/images/lipbalm.jpg" },
-    { id: 18, name: "Shampoo", price: 180, image: "/images/shampoo.jpg" },
-    { id: 19, name: "Face Wash", price: 120, image: "/images/facewash.jpg" },
-    { id: 20, name: "Kajal", price: 90, image: "/images/kajal.jpg" },
-  ],
-  "Grocery & Pet Items": [
-    { id: 21, name: "Rice", price: 50, image: "/images/rice.jpg" },
-    { id: 22, name: "Milk", price: 30, image: "/images/milk.jpg" },
-    { id: 23, name: "Dog Food", price: 600, image: "/images/dogfood.jpg" },
-    { id: 24, name: "Cat Litter", price: 350, image: "/images/catlitter.jpg" },
-    { id: 25, name: "Eggs", price: 10, image: "/images/eggs.jpg" },
-  ],
-};
+const categories = [
+  "Books",
+  "Medicine",
+  "Electronics",
+  "Beauty Products",
+  "Grocery & Pet Items",
+];
+
+const allProducts = [
+  {
+    id: 1,
+    name: "Physics Book",
+    price: "$15",
+    category: "Books",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 2,
+    name: "Biology Book",
+    price: "$18",
+    category: "Books",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 3,
+    name: "Math Guide",
+    price: "$12",
+    category: "Books",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 4,
+    name: "English Grammar",
+    price: "$14",
+    category: "Books",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 5,
+    name: "History Notes",
+    price: "$10",
+    category: "Books",
+    image: "https://via.placeholder.com/150",
+  },
+
+  {
+    id: 6,
+    name: "Paracetamol",
+    price: "$5",
+    category: "Medicine",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 7,
+    name: "Cough Syrup",
+    price: "$7",
+    category: "Medicine",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 8,
+    name: "Bandage Roll",
+    price: "$4",
+    category: "Medicine",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 9,
+    name: "First Aid Kit",
+    price: "$20",
+    category: "Medicine",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 10,
+    name: "Antiseptic Cream",
+    price: "$6",
+    category: "Medicine",
+    image: "https://via.placeholder.com/150",
+  },
+
+  {
+    id: 11,
+    name: "Headphones",
+    price: "$35",
+    category: "Electronics",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 12,
+    name: "Smart Watch",
+    price: "$60",
+    category: "Electronics",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 13,
+    name: "USB Drive",
+    price: "$8",
+    category: "Electronics",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 14,
+    name: "Wireless Mouse",
+    price: "$10",
+    category: "Electronics",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 15,
+    name: "Keyboard",
+    price: "$20",
+    category: "Electronics",
+    image: "https://via.placeholder.com/150",
+  },
+
+  {
+    id: 16,
+    name: "Lipstick Set",
+    price: "$12",
+    category: "Beauty Products",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 17,
+    name: "Face Cream",
+    price: "$9",
+    category: "Beauty Products",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 18,
+    name: "Hair Oil",
+    price: "$7",
+    category: "Beauty Products",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 19,
+    name: "Face Wash",
+    price: "$6",
+    category: "Beauty Products",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 20,
+    name: "Nail Polish",
+    price: "$5",
+    category: "Beauty Products",
+    image: "https://via.placeholder.com/150",
+  },
+
+  {
+    id: 21,
+    name: "Rice 5kg",
+    price: "$12",
+    category: "Grocery & Pet Items",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 22,
+    name: "Milk",
+    price: "$3",
+    category: "Grocery & Pet Items",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 23,
+    name: "Dog Food",
+    price: "$25",
+    category: "Grocery & Pet Items",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 24,
+    name: "Sugar 1kg",
+    price: "$2",
+    category: "Grocery & Pet Items",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 25,
+    name: "Toothpaste",
+    price: "$1",
+    category: "Grocery & Pet Items",
+    image: "https://via.placeholder.com/150",
+  },
+];
 
 const BuyProducts = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("Books");
-  const [favorites, setFavorites] = useState([]);
-  const navigate = useNavigate();
+  const [wishlist, setWishlist] = useState([]);
+  const [search, setSearch] = useState("");
 
-  const filteredProducts = productsData[selectedCategory].filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const toggleFavorite = (id) => {
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((fid) => fid !== id) : [...prev, id]
+  const toggleWishlist = (id) => {
+    setWishlist((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
   };
 
-  const handleAddToCart = (product) => {
-    localStorage.setItem("cartItem", JSON.stringify(product));
-    navigate("/cart");
+  const scrollToCategory = (cat) => {
+    const element = document.getElementById(cat);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
-  return (
-    <div className="pt-24 px-4 bg-gray-50 min-h-screen">
-      <h1 className="text-center text-3xl font-bold text-green-700 mb-6">
-        Buy Products
-      </h1>
+  const filteredProducts = search
+    ? allProducts.filter((item) =>
+        item.name.toLowerCase().includes(search.toLowerCase())
+      )
+    : allProducts;
 
-      {/* Category Selector */}
-      <div className="flex flex-wrap justify-center gap-4 mb-4">
-        {Object.keys(productsData).map((cat) => (
+  return (
+    <div className="pt-24 px-6 bg-[#f9fafb] min-h-screen">
+      {/* Header */}
+      <div className="text-center mb-6">
+        <h1 className="text-3xl font-bold text-green-800">Browse Products</h1>
+        <p className="text-gray-600">Find what you're looking for easily</p>
+      </div>
+
+      {/* Category Buttons */}
+      <div className="flex flex-wrap justify-center gap-4 mb-6">
+        {categories.map((cat) => (
           <button
             key={cat}
-            onClick={() => {
-              setSelectedCategory(cat);
-              setSearchTerm("");
-            }}
-            className={`px-4 py-2 rounded-full ${
-              selectedCategory === cat
-                ? "bg-green-700 text-white"
-                : "bg-white text-green-700 border"
-            }`}
+            onClick={() => scrollToCategory(cat)}
+            className="bg-green-100 text-green-800 px-4 py-2 rounded-full hover:bg-green-200 transition"
           >
             {cat}
           </button>
         ))}
       </div>
 
-      {/* Search Box */}
-      <div className="flex justify-center mb-6">
+      {/* Search Bar */}
+      <div className="flex justify-center mb-10">
         <input
           type="text"
-          placeholder={`Search in ${selectedCategory}...`}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full max-w-md px-4 py-2 border rounded shadow-sm"
+          placeholder="Search for a product..."
+          className="border w-full max-w-md px-4 py-2 rounded-md shadow-md"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
 
-      {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {filteredProducts.map((item) => (
-          <div
-            key={item.id}
-            className="bg-white rounded-lg shadow-md p-4 relative hover:shadow-xl transition-all"
-          >
-            <img
-              src={item.image}
-              alt={item.name}
-              className="h-44 w-full object-contain mb-4"
-            />
-            <h2 className="text-lg font-semibold">{item.name}</h2>
-            <p className="text-green-800 font-bold mb-2">${item.price}</p>
+      {/* Products by Category */}
+      {categories.map((cat) => {
+        const productsInCat = filteredProducts.filter((p) => p.category === cat);
+        if (productsInCat.length === 0) return null;
+        return (
+          <div key={cat} id={cat} className="mb-12">
+            <h2 className="text-2xl font-semibold text-green-700 mb-4">{cat}</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+              {productsInCat.map((product) => (
+                <div
+                  key={product.id}
+                  className="relative bg-white rounded-lg shadow-md hover:shadow-lg p-4 transition"
+                >
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-32 object-cover rounded-md mb-3"
+                  />
+                  <h3 className="font-semibold">{product.name}</h3>
+                  <p className="text-green-700 font-bold">{product.price}</p>
 
-            {/* Heart and Eye */}
-            <div className="absolute top-4 right-4 flex flex-col gap-2">
-              <button onClick={() => toggleFavorite(item.id)}>
-                {favorites.includes(item.id) ? (
-                  <FaHeart className="text-red-600" />
-                ) : (
-                  <FaRegHeart className="text-gray-500" />
-                )}
-              </button>
-              <FaEye className="text-gray-500" />
+                  {/* Icons */}
+                  <div className="absolute top-2 right-2 flex gap-2">
+                    <span onClick={() => toggleWishlist(product.id)} className="cursor-pointer text-red-500">
+                      {wishlist.includes(product.id) ? <FaHeart /> : <FaRegHeart />}
+                    </span>
+                    <span className="cursor-pointer text-gray-500">
+                      <FaEye />
+                    </span>
+                  </div>
+
+                  <button
+                    onClick={() => alert("Redirect to Cart")}
+                    className="mt-3 w-full bg-green-600 text-white py-1 rounded hover:bg-green-700 transition"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              ))}
             </div>
-
-            {/* Add to Cart */}
-            <button
-              className="mt-3 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded"
-              onClick={() => handleAddToCart(item)}
-            >
-              Add to Cart
-            </button>
           </div>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 };

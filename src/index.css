@@ -8,6 +8,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-padding-top: 6rem; /* adjust according to your navbar height */
+}
+
+
 .shine-effect {
   background: linear-gradient(
     135deg,
