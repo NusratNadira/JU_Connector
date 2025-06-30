@@ -17,13 +17,15 @@ const allProducts = [
     name: "Physics Book",
     price: "$15",
     category: "Books",
-    image: "https://via.placeholder.com/150",
+    condition: "Second Hand",
+    image: "/src/assets/about-img.png",
   },
   {
     id: 2,
     name: "Biology Book",
     price: "$18",
     category: "Books",
+    condition: "Second Hand",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -31,6 +33,7 @@ const allProducts = [
     name: "Math Guide",
     price: "$12",
     category: "Books",
+    condition: "Second Hand",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -38,6 +41,7 @@ const allProducts = [
     name: "English Grammar",
     price: "$14",
     category: "Books",
+    condition: "Second Hand",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -45,6 +49,7 @@ const allProducts = [
     name: "History Notes",
     price: "$10",
     category: "Books",
+    condition: "Second Hand",
     image: "https://via.placeholder.com/150",
   },
 
@@ -53,6 +58,7 @@ const allProducts = [
     name: "Paracetamol",
     price: "$5",
     category: "Medicine",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -60,6 +66,7 @@ const allProducts = [
     name: "Cough Syrup",
     price: "$7",
     category: "Medicine",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -67,6 +74,7 @@ const allProducts = [
     name: "Bandage Roll",
     price: "$4",
     category: "Medicine",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -74,6 +82,7 @@ const allProducts = [
     name: "First Aid Kit",
     price: "$20",
     category: "Medicine",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -81,6 +90,7 @@ const allProducts = [
     name: "Antiseptic Cream",
     price: "$6",
     category: "Medicine",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
 
@@ -89,6 +99,7 @@ const allProducts = [
     name: "Headphones",
     price: "$35",
     category: "Electronics",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -96,6 +107,7 @@ const allProducts = [
     name: "Smart Watch",
     price: "$60",
     category: "Electronics",
+    condition: "Second Hand",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -103,6 +115,7 @@ const allProducts = [
     name: "USB Drive",
     price: "$8",
     category: "Electronics",
+    condition: "Second Hand",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -110,6 +123,7 @@ const allProducts = [
     name: "Wireless Mouse",
     price: "$10",
     category: "Electronics",
+    condition: "Second Hand",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -117,6 +131,7 @@ const allProducts = [
     name: "Keyboard",
     price: "$20",
     category: "Electronics",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
 
@@ -125,6 +140,7 @@ const allProducts = [
     name: "Lipstick Set",
     price: "$12",
     category: "Beauty Products",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -132,6 +148,7 @@ const allProducts = [
     name: "Face Cream",
     price: "$9",
     category: "Beauty Products",
+    condition: "Second Hand",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -139,6 +156,7 @@ const allProducts = [
     name: "Hair Oil",
     price: "$7",
     category: "Beauty Products",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -146,6 +164,7 @@ const allProducts = [
     name: "Face Wash",
     price: "$6",
     category: "Beauty Products",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -153,6 +172,7 @@ const allProducts = [
     name: "Nail Polish",
     price: "$5",
     category: "Beauty Products",
+    condition: "Second Hand",
     image: "https://via.placeholder.com/150",
   },
 
@@ -161,6 +181,7 @@ const allProducts = [
     name: "Rice 5kg",
     price: "$12",
     category: "Grocery & Pet Items",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -168,6 +189,7 @@ const allProducts = [
     name: "Milk",
     price: "$3",
     category: "Grocery & Pet Items",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -175,6 +197,7 @@ const allProducts = [
     name: "Dog Food",
     price: "$25",
     category: "Grocery & Pet Items",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -182,6 +205,7 @@ const allProducts = [
     name: "Sugar 1kg",
     price: "$2",
     category: "Grocery & Pet Items",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
   {
@@ -189,6 +213,7 @@ const allProducts = [
     name: "Toothpaste",
     price: "$1",
     category: "Grocery & Pet Items",
+    condition: "New",
     image: "https://via.placeholder.com/150",
   },
 ];
@@ -266,6 +291,7 @@ const BuyProducts = () => {
               {productsInCat.map((product) => (
                 <div
                   key={product.id}
+                   onClick={() => navigate("/product-detail", { state: { product } })}
                   className="relative bg-white rounded-lg shadow-md hover:shadow-lg p-4 transition"
                 >
                   <img

@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import BuyProducts from "./pages/products/BuyProducts";
 import SellProducts from "./pages/products/SellProducts";
+import ProductDetail from "./pages/products/ProductDetail";
 import Contact from "./pages/Contact";
 import Community from "./pages/Community";
 import TuitionOffers from "./pages/opportunities/TuitionOffers";
@@ -31,6 +32,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/products/BuyProducts" element={<BuyProducts />} />
             <Route path="/products/SellProducts" element={<SellProducts />} />
+            <Route path="product-detail" element={<ProductDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/community" element={<Community />} />
             {/* <Route path="/tuition-offers" element={<TuitionOffers />} /> */}
