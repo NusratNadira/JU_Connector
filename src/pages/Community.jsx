@@ -17,31 +17,35 @@ import {
 const alumni = [
   {
     name: "Tanvir Ahsan",
-    role: "Software Engineer at Google",
+    role: "Software Engineer",
     fb: "https://facebook.com/tanvir",
     email: "tanvir@gmail.com",
     linkedin: "https://linkedin.com/in/tanvir",
+    image: "/src/assets/hossain.png",
   },
   {
     name: "Mahmuda Sultana",
-    role: "Data Scientist at Meta",
+    role: "Data Scientist",
     fb: "https://facebook.com/mahmuda",
     email: "mahmuda@gmail.com",
     linkedin: "https://linkedin.com/in/mahmuda",
+    image: "/src/assets/shar.png",
   },
   {
     name: "Asif Rahman",
-    role: "Backend Developer at Amazon",
+    role: "Backend Developer ",
     fb: "https://facebook.com/asif",
     email: "asif@gmail.com",
     linkedin: "https://linkedin.com/in/asif",
+    image: "/src/assets/rana.png",
   },
   {
     name: "Jarin Alam",
-    role: "UX/UI Designer at Adobe",
+    role: "UX/UI Designer",
     fb: "https://facebook.com/jarin",
     email: "jarin@gmail.com",
     linkedin: "https://linkedin.com/in/jarin",
+    image: "/src/assets/nadira'simage.jpg",
   },
 ];
 
@@ -87,25 +91,34 @@ const Community = () => {
       </div>
 
       {/* Alumni Section */}
-      <div className="bg-white p-6 rounded-lg shadow mb-10 max-w-6xl mx-auto">
-        <h2 className="text-2xl font-semibold text-center text-[#007f5f] mb-6">Alumni Panel</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {alumni.map((person, index) => (
-            <div
-              key={index}
-              className="bg-[#f9fdfb] p-6 rounded-lg shadow relative group overflow-hidden hover:shadow-xl transition"
-            >
-              <h3 className="text-xl font-semibold text-[#007f5f]">{person.name}</h3>
-              <p className="text-sm text-gray-600 mb-4">{person.role}</p>
-              <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 group-hover:top-4 transition-all duration-500 flex space-x-3 bg-[#e1f8ef] p-2 rounded-full shadow">
-                <a href={person.fb} target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
-                <a href={`mailto:${person.email}`}><FaEnvelope /></a>
-                <a href={person.linkedin} target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
-              </div>
-            </div>
-          ))}
+       {/* Alumni Section */}
+<div className="bg-white p-6 rounded-lg shadow mb-10 max-w-6xl mx-auto">
+  <h2 className="text-2xl font-semibold text-center text-[#007f5f] mb-6">Alumni Panel</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    {alumni.map((person, index) => (
+      <div
+        key={index}
+        className="bg-[#f9fdfb] p-6 rounded-lg shadow relative group overflow-hidden hover:shadow-xl transition text-center"
+      >
+        <img
+          src={person.image}
+          alt={person.name}
+          className="w-24 h-24 object-cover rounded-full mx-auto mb-4 border-4 border-white shadow"
+        />
+        <h3 className="text-xl font-semibold text-[#007f5f]">{person.name}</h3>
+        <p className="text-sm text-gray-600 mb-4">{person.role}</p>
+
+        {/* Social Icons */}
+        <div className="absolute -top-20 left-1/2 transform -translate-x-1/2 group-hover:top-4 transition-all duration-500 flex space-x-3 bg-[#e1f8ef] p-2 rounded-full shadow">
+          <a href={person.fb} target="_blank" rel="noopener noreferrer"><FaFacebook /></a>
+          <a href={`mailto:${person.email}`}><FaEnvelope /></a>
+          <a href={person.linkedin} target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
         </div>
       </div>
+    ))}
+  </div>
+</div>
+
 
       {/* Opportunity Section */}
       <div className="bg-white p-6 rounded-lg shadow mb-10 max-w-6xl mx-auto">

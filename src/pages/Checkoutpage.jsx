@@ -37,7 +37,7 @@ return (
           cartItems.map((item, index) => (
             <div key={index} className="flex justify-between">
               <span>{item.name} x {item.quantity}</span>
-              <span>${(parseFloat(item.price.replace("$", "")) * item.quantity).toFixed(2)}</span>
+              <span>৳{(parseFloat(item.price.replace("৳", "")) * item.quantity).toFixed(2)}</span>
             </div>
           ))
         ) : (
@@ -47,7 +47,7 @@ return (
         <hr />
         <div className="flex justify-between">
           <span>Subtotal:</span>
-          <span>${total.toFixed(2)}</span>
+          <span>৳{total.toFixed(2)}</span>
         </div>
         <div className="flex justify-between">
           <span>Shipping:</span>
@@ -56,7 +56,7 @@ return (
         <hr />
         <div className="flex justify-between font-bold text-green-700 text-lg">
           <span>Total:</span>
-          <span>${total.toFixed(2)}</span>
+          <span>৳{total.toFixed(2)}</span>
         </div>
       </div>
 

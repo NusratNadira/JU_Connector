@@ -65,7 +65,7 @@ const ProductDetail = () => {
           <div className="flex gap-4 items-center mb-8">
             <button
               onClick={handleAddToCart}
-              className="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition"
+              className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition"
             >
               Buy Now
             </button>

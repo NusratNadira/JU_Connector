@@ -25,7 +25,7 @@ const Cart = () => {
     );
   }
 
-  const price = parseFloat(product.price.replace("$", ""));
+  const price = parseFloat(product.price.replace("৳", ""));
   const subtotal = price * quantity;
 
   const handleCheckout = () => {
@@ -56,7 +56,7 @@ const Cart = () => {
             <tbody>
               <tr className="text-green-900 font-medium border-b py-4">
                 <td className="py-4">{product.name}</td>
-                <td>${price}</td>
+                <td>৳{price}</td>
                 <td>
                   <input
                     type="number"
@@ -66,7 +66,7 @@ const Cart = () => {
                     className="border border-green-300 rounded px-3 py-1 w-16 text-center"
                   />
                 </td>
-                <td>${subtotal.toFixed(2)}</td>
+                <td>৳{subtotal.toFixed(2)}</td>
               </tr>
             </tbody>
           </table>
@@ -105,7 +105,7 @@ const Cart = () => {
           <div className="space-y-2 text-gray-700">
             <div className="flex justify-between">
               <span>Subtotal:</span>
-              <span>${subtotal.toFixed(2)}</span>
+              <span>৳{subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping:</span>
@@ -114,7 +114,7 @@ const Cart = () => {
             <hr />
             <div className="flex justify-between font-semibold text-green-800 text-lg">
               <span>Total:</span>
-              <span>${subtotal.toFixed(2)}</span>
+              <span>৳{subtotal.toFixed(2)}</span>
             </div>
           </div>
           <button

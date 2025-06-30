@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import About from "./pages/About";
 import BuyProducts from "./pages/products/BuyProducts";
 import SellProducts from "./pages/products/SellProducts";
@@ -29,6 +31,8 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="/about" element={<About />} />
             <Route path="/products/BuyProducts" element={<BuyProducts />} />
             <Route path="/products/SellProducts" element={<SellProducts />} />

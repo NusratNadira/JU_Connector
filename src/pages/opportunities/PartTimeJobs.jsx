@@ -3,7 +3,7 @@
 const partTimeJobs = [
   {
     id: 1,
-    image: "https://source.unsplash.com/400x250/?library,student",
+    image: "/src/assets/lib.png",
     jobPost: "Library Assistant",
     company: "JU Central Library",
     salary: "৳6,000/month",
@@ -13,7 +13,7 @@ const partTimeJobs = [
   },
   {
     id: 2,
-    image: "https://source.unsplash.com/400x250/?cafe,work",
+    image: "/src/assets/cafe.png",
     jobPost: "Cafe Helper",
     company: "Campus Cafe - New Market",
     salary: "৳5,000/month",
@@ -23,7 +23,7 @@ const partTimeJobs = [
   },
   {
     id: 3,
-    image: "https://source.unsplash.com/400x250/?design,graphic",
+    image: "/src/assets/gdesigner.png",
     jobPost: "Graphic Designer (Part-Time)",
     company: "JU Design Club",
     salary: "৳8,000/month",
@@ -33,7 +33,7 @@ const partTimeJobs = [
   },
   {
     id: 4,
-    image: "https://source.unsplash.com/400x250/?coding,laptop",
+    image: "/src/assets/webdev.png",
     jobPost: "Junior Web Developer",
     company: "JU Computer Club",
     salary: "৳10,000/month",
@@ -43,17 +43,17 @@ const partTimeJobs = [
   },
   {
     id: 5,
-    image: "https://source.unsplash.com/400x250/?books,tutor",
-    jobPost: "Private Tutor (Physics)",
-    company: "Local Tuition Board",
+    image: "/src/assets/deliveryboy.png",
+    jobPost: "Delivery Man",
+    company: "লাগবে সার্ভিস",
     salary: "৳7,000/month",
-    dutyHour: "Evening – 1.5 hrs/day",
-    reference: "Shampa Sultana – Alumni (Physics Dept.)",
-    requirements: "Strong grasp on HSC Physics topics",
+    dutyHour: "Evening – 3hrs/day",
+    reference: "Abdullah Al Hossain – Alumni (IIT)",
+    requirements: "Strong Communication Skill",
   },
   {
     id: 6,
-    image: "https://source.unsplash.com/400x250/?photographer,student",
+    image: "/src/assets/photographer.png",
     jobPost: "Event Photographer Assistant",
     company: "JU Photography Club",
     salary: "৳6,500/month",
