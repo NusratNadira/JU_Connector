@@ -1,3 +1,5 @@
+This is a fully responsive React project, serving as a unified platform for all Jahangirnagar University (JU) students. It allows users to contribute and consume content, fostering a collaborative and supportive community.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
